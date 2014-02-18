@@ -1,6 +1,6 @@
 # ghteams
 
-**Create and load persistent GitHub authentication tokens for command-line apps**
+**A node library to interact with the GitHub organisation teams API**
 
 [![NPM](https://nodei.co/npm/ghteams.png?mini=true)](https://nodei.co/npm/ghteams/)
 
