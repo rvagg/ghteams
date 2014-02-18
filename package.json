@@ -1,0 +1,34 @@
+{
+  "name": "ghteams",
+  "version": "0.0.0",
+  "description": "Interact with the GitHub organisation teams API",
+  "main": "ghteams.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rvagg/ghteams.git"
+  },
+  "keywords": [
+    "github",
+    "teams",
+    "organisations",
+    "organizations"
+  ],
+  "author": "Rod Vagg <r@va.gg>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rvagg/ghteams/issues"
+  },
+  "homepage": "https://github.com/rvagg/ghteams",
+  "dependencies": {
+    "hyperquest": "~0.2.0",
+    "stream-browserify": "~0.1.3",
+    "bl": "~0.7.0"
+  },
+  "devDependencies": {
+    "tape": "~2.4.2",
+    "xtend": "~2.1.2"
+  }
+}
