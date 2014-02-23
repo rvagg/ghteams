@@ -1,30 +1,21 @@
-const hyperquest = require('hyperquest')
-    , bl         = require('bl')
+const jsonist = require('jsonist')
 
 
-function ghreq (auth, method, url) {
+function ghget (auth, url, callback) {
   var options = {
       headers : { 'User-Agent' : 'Magic Node.js application that does magic things' }
     , auth    : auth.user + ':' + auth.token
   }
 
-  return hyperquest[method](url, options)
-}
+  jsonist.get(url, options, function (err, data) {
+    if (err)
+      return callback(err)
 
+    if (data.error || data.message)
+      return callback(new Error('Error from GitHub: ' + (data.error || data.message)))
 
-function ghget (auth, url, callback) {
-  ghreq(auth, 'get', url)
-    .on('error', callback)
-    .pipe(bl(function (err, data) {
-      if (err)
-        return callback(err)
-
-      var resp = JSON.parse(data.toString())
-      if (resp.error || resp.message)
-        return callback(new Error('Error from GitHub: ' + (resp.error || resp.message)))
-
-      callback(null, resp)
-    }))
+    callback(null, data)
+  })
 }
 
 

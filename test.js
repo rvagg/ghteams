@@ -1,11 +1,18 @@
-const http       = require('http')
-    , test       = require('tape')
-    , hyperquest = require('hyperquest')
-    , xtend      = require('xtend')
-    , EE         = require('events').EventEmitter
-    , ghteams    = require('./')
+const http           = require('http')
+    , test           = require('tape')
+    , requireSubvert = require('require-subvert')(__dirname)
+    , _hyperquest    = require('hyperquest')
+    , xtend          = require('xtend')
+    , EE             = require('events').EventEmitter
 
-    , hyperget   = hyperquest.get
+requireSubvert.subvert('hyperquest', hyperquest)
+
+var ghteams    = require('./')
+  , hyperget
+
+function hyperquest () {
+  return hyperget.apply(this, arguments)
+}
 
 function makeServer (data) {
   var ee     = new EE()
@@ -23,9 +30,9 @@ function makeServer (data) {
         if (err)
           return ee.emit('error', err)
 
-        hyperquest.get = function (url, opts) {
+        hyperget = function (url, opts) {
           ee.emit('get', url, opts)
-          return hyperget('http://localhost:' + server.address().port, opts)
+          return _hyperquest('http://localhost:' + server.address().port, opts)
         }
 
         ee.emit('ready')
