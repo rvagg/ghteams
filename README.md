@@ -1,5 +1,7 @@
 # ghteams
 
+[![Build Status](https://secure.travis-ci.org/rvagg/ghteams.png)](http://travis-ci.org/rvagg/ghteams)
+
 **A node library to interact with the GitHub organisation teams API**
 
 [![NPM](https://nodei.co/npm/ghteams.png?mini=true)](https://nodei.co/npm/ghteams/)
