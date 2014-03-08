@@ -76,6 +76,13 @@ function members (auth, org, name, callback) {
   })
 }
 
-module.exports.list    = list
-module.exports.get     = get
-module.exports.members = members
+
+function userTeams (auth, callback) {
+  ghget(auth, 'https://api.github.com/user/teams', callback)
+}
+
+
+module.exports.list      = list
+module.exports.get       = get
+module.exports.members   = members
+module.exports.userTeams = userTeams

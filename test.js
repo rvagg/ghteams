@@ -181,3 +181,19 @@ test('test get members by org & name', function (t) {
     .on('close'  , verifyClose(t))
 })
 
+
+test('test get teams for auth user', function (t) {
+  t.plan(7)
+
+  var auth     = { user: 'authuser2', token: 'authtoken2' }
+    , teamId   = 101
+    , testData = { test: 'team data' }
+
+  makeServer(testData)
+    .on('ready', function () {
+      ghteams.userTeams(xtend(auth), verifyData(t, testData))
+    })
+    .on('request', verifyRequest(t, auth))
+    .on('get'    , verifyUrl(t, 'https://api.github.com/user/teams'))
+    .on('close'  , verifyClose(t))
+})

@@ -50,6 +50,14 @@ ghteams.members(authOptions, 123456, function (err, members) {
   // Array containing full list of team members team #123456
   console.log(members)
 })
+
+
+// get teams to which the user represented by `authOptions` is a member of
+ghteams.userTeams(authOptions, function (err, teams) {
+  // Array cotnaining full list of teams to which the current
+  // authenticated user belongs
+  console.log(teams)
+})
 ```
 
 
