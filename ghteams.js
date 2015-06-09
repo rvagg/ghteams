@@ -1,26 +1,16 @@
 const jsonist = require('jsonist')
+    , ghutils = require('ghutils')
 
 
-function ghget (auth, url, callback) {
-  var options = {
-      headers : { 'User-Agent' : 'Magic Node.js application that does magic things' }
-    , auth    : auth.user + ':' + auth.token
+function list (auth, org, options, callback) {
+  if (typeof options == 'function') { // no options
+    callback = options
+    options  = {}
   }
 
-  jsonist.get(url, options, function (err, data) {
-    if (err)
-      return callback(err)
+  var urlbase = 'https://api.github.com/orgs/' + org + '/teams'
 
-    if (data.error || data.message)
-      return callback(new Error('Error from GitHub: ' + (data.error || data.message)))
-
-    callback(null, data)
-  })
-}
-
-
-function list (auth, org, callback) {
-  ghget(auth, 'https://api.github.com/orgs/' + org + '/teams', callback)
+  ghutils.lister(auth, urlbase, options, callback)
 }
 
 
@@ -41,8 +31,13 @@ function teamIdByName (auth, org, name, callback) {
 }
 
 
-function getById (auth, id, callback) {
-  ghget(auth, 'https://api.github.com/teams/' + id, callback)
+function getById (auth, id, options, callback) {
+  if (typeof options == 'function') { // no options
+    callback = options
+    options  = {}
+  }
+
+  ghutils.ghget(auth, 'https://api.github.com/teams/' + id, options, callback)
 }
 
 
@@ -59,8 +54,15 @@ function get (auth, org, name, callback) {
 }
 
 
-function membersById (auth, id, callback) {
-  ghget(auth, 'https://api.github.com/teams/' + id + '/members', callback)
+function membersById (auth, id, options, callback) {
+  if (typeof options == 'function') { // no options
+    callback = options
+    options  = {}
+  }
+
+  var urlbase = 'https://api.github.com/teams/' + id + '/members'
+
+  ghutils.lister(auth, urlbase, options, callback)
 }
 
 
@@ -77,8 +79,15 @@ function members (auth, org, name, callback) {
 }
 
 
-function userTeams (auth, callback) {
-  ghget(auth, 'https://api.github.com/user/teams', callback)
+function userTeams (auth, options, callback) {
+  if (typeof options == 'function') { // no options
+    callback = options
+    options  = {}
+  }
+
+  var urlbase = 'https://api.github.com/user/teams'
+
+  ghutils.lister(auth, urlbase, options, callback)
 }
 
 
