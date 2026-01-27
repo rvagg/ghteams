@@ -1,97 +1,53 @@
-const jsonist = require('jsonist')
-    , ghutils = require('ghutils')
+import { ghget, lister } from 'ghutils'
 
+const defaultApiUrl = 'https://api.github.com'
 
-function list (auth, org, options, callback) {
-  if (typeof options == 'function') { // no options
-    callback = options
-    options  = {}
+export async function list (auth, org, options = {}) {
+  const apiUrl = options._apiUrl || defaultApiUrl
+  const url = `${apiUrl}/orgs/${org}/teams`
+  return lister(auth, url, options)
+}
+
+async function teamIdByName (auth, org, name, options = {}) {
+  const teams = await list(auth, org, options)
+  const team = teams.find((t) => t.name === name)
+  if (!team) {
+    throw new Error(`No such team [${name}] for org [${org}]`)
   }
-
-  var urlbase = 'https://api.github.com/orgs/' + org + '/teams'
-
-  ghutils.lister(auth, urlbase, options, callback)
+  return team.id
 }
 
-
-function teamIdByName (auth, org, name, callback) {
-  list(auth, org, function (err, teams) {
-    if (err)
-      return callback(err)
-
-    var team = teams.filter(function (team) {
-      return team.name == name
-    })[0]
-
-    if (!team)
-      return callback(new Error('No such team [' + name + '] for org [' + org + ']'))
-
-    callback(null, team.id)
-  })
+async function getById (auth, id, options = {}) {
+  const apiUrl = options._apiUrl || defaultApiUrl
+  const url = `${apiUrl}/teams/${id}`
+  const { data } = await ghget(auth, url, options)
+  return data
 }
 
-
-function getById (auth, id, options, callback) {
-  if (typeof options == 'function') { // no options
-    callback = options
-    options  = {}
+export async function get (auth, org, name, options = {}) {
+  if (name === undefined) {
+    return getById(auth, org, options)
   }
-
-  ghutils.ghget(auth, 'https://api.github.com/teams/' + id, options, callback)
+  const id = await teamIdByName(auth, org, name, options)
+  return getById(auth, id, options)
 }
 
-
-function get (auth, org, name, callback) {
-  if (typeof name == 'function')
-    return getById(auth, org, name)
-
-  teamIdByName(auth, org, name, function (err, id) {
-    if (err)
-      return callback(err)
-
-    getById(auth, id, callback)
-  })
+async function membersById (auth, id, options = {}) {
+  const apiUrl = options._apiUrl || defaultApiUrl
+  const url = `${apiUrl}/teams/${id}/members`
+  return lister(auth, url, options)
 }
 
-
-function membersById (auth, id, options, callback) {
-  if (typeof options == 'function') { // no options
-    callback = options
-    options  = {}
+export async function members (auth, org, name, options = {}) {
+  if (name === undefined) {
+    return membersById(auth, org, options)
   }
-
-  var urlbase = 'https://api.github.com/teams/' + id + '/members'
-
-  ghutils.lister(auth, urlbase, options, callback)
+  const id = await teamIdByName(auth, org, name, options)
+  return membersById(auth, id, options)
 }
 
-
-function members (auth, org, name, callback) {
-  if (typeof name == 'function')
-    return membersById(auth, org, name)
-
-  teamIdByName(auth, org, name, function (err, id) {
-    if (err)
-      return callback(err)
-
-    membersById(auth, id, callback)
-  })
+export async function userTeams (auth, options = {}) {
+  const apiUrl = options._apiUrl || defaultApiUrl
+  const url = `${apiUrl}/user/teams`
+  return lister(auth, url, options)
 }
-
-
-function userTeams (auth, options, callback) {
-  if (typeof options == 'function') { // no options
-    callback = options
-    options  = {}
-  }
-
-  var urlbase = 'https://api.github.com/user/teams'
-
-  ghutils.lister(auth, urlbase, options, callback)
-}
-
-
-module.exports.list      = list
-module.exports.get       = get
-module.exports.members   = members
-module.exports.userTeams = userTeams
