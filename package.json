@@ -1,6 +1,6 @@
 {
   "name": "ghteams",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Interact with the GitHub organisation teams API",
   "type": "module",
   "exports": "./ghteams.js",
