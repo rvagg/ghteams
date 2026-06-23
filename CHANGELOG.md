@@ -1,3 +1,9 @@
+## [1.0.5](https://github.com/rvagg/ghteams/compare/v1.0.4...v1.0.5) (2026-06-23)
+
+### Trivial Changes
+
+* **deps:** bump actions/checkout from 6.0.3 to 7.0.0 ([#6](https://github.com/rvagg/ghteams/issues/6)) ([71f8742](https://github.com/rvagg/ghteams/commit/71f874213e7fc5001e5f499bb2348c4eda164143))
+
 ## [1.0.4](https://github.com/rvagg/ghteams/compare/v1.0.3...v1.0.4) (2026-06-22)
 
 ### Trivial Changes
