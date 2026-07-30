@@ -1,3 +1,9 @@
+## [1.0.9](https://github.com/rvagg/ghteams/compare/v1.0.8...v1.0.9) (2026-07-30)
+
+### Trivial Changes
+
+* downgrade broken changelog maker, backfill entries ([#11](https://github.com/rvagg/ghteams/issues/11)) ([6895355](https://github.com/rvagg/ghteams/commit/689535501004ac6f9bcaae17786463bfdf5d3d32))
+
 ## [1.0.8](https://github.com/rvagg/ghteams/compare/v1.0.7...v1.0.8) (2026-07-29)
 
 ### Trivial Changes
