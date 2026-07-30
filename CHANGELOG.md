@@ -1,8 +1,20 @@
 ## [1.0.8](https://github.com/rvagg/ghteams/compare/v1.0.7...v1.0.8) (2026-07-29)
 
+### Trivial Changes
+
+* **deps:** bump the github-actions-minor-patch group with 2 updates ([#10](https://github.com/rvagg/ghteams/issues/10)) ([0d2c345](https://github.com/rvagg/ghteams/commit/0d2c345f240752e9a568b196583f4bcc5922455b))
+
 ## [1.0.7](https://github.com/rvagg/ghteams/compare/v1.0.6...v1.0.7) (2026-07-22)
 
+### Trivial Changes
+
+* **ci:** slow down dependabot, add depsound, pin action hashes ([#9](https://github.com/rvagg/ghteams/issues/9)) ([0fbff18](https://github.com/rvagg/ghteams/commit/0fbff18e2cf45ba8305d2397a52fce9c806e23d9))
+
 ## [1.0.6](https://github.com/rvagg/ghteams/compare/v1.0.5...v1.0.6) (2026-07-08)
+
+### Trivial Changes
+
+* **deps-dev:** bump conventional-changelog-conventionalcommits from 9.3.1 to 10.2.0 ([cfa068f](https://github.com/rvagg/ghteams/commit/cfa068f2af6401eb3c6b228f84c5f23bdd8461b2))
 
 ## [1.0.5](https://github.com/rvagg/ghteams/compare/v1.0.4...v1.0.5) (2026-06-23)
 
