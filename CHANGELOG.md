@@ -1,3 +1,9 @@
+## [1.0.11](https://github.com/rvagg/ghteams/compare/v1.0.10...v1.0.11) (2026-08-03)
+
+### Trivial Changes
+
+* **deps-dev:** bump @semantic-release/git from 10.0.1 to 11.0.1 ([#12](https://github.com/rvagg/ghteams/issues/12)) ([1247c5e](https://github.com/rvagg/ghteams/commit/1247c5edf4839105a60a182a054c447699366e9e))
+
 ## [1.0.10](https://github.com/rvagg/ghteams/compare/v1.0.9...v1.0.10) (2026-08-03)
 
 ### Trivial Changes
