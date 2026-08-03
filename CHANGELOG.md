@@ -1,3 +1,9 @@
+## [1.0.10](https://github.com/rvagg/ghteams/compare/v1.0.9...v1.0.10) (2026-08-03)
+
+### Trivial Changes
+
+* **deps-dev:** bump @semantic-release/changelog from 6.0.3 to 7.0.0 ([#13](https://github.com/rvagg/ghteams/issues/13)) ([7e43716](https://github.com/rvagg/ghteams/commit/7e4371697329f45d4a1389fc8b1385427a79fbb8))
+
 ## [1.0.9](https://github.com/rvagg/ghteams/compare/v1.0.8...v1.0.9) (2026-07-30)
 
 ### Trivial Changes
