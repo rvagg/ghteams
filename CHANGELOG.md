@@ -1,3 +1,9 @@
+## [1.0.12](https://github.com/rvagg/ghteams/compare/v1.0.11...v1.0.12) (2026-08-05)
+
+### Trivial Changes
+
+* **deps:** bump the github-actions-minor-patch group with 2 updates ([#15](https://github.com/rvagg/ghteams/issues/15)) ([e0fedc5](https://github.com/rvagg/ghteams/commit/e0fedc580363d32fc87e9ccafb74ec1e8e7d0fed))
+
 ## [1.0.11](https://github.com/rvagg/ghteams/compare/v1.0.10...v1.0.11) (2026-08-03)
 
 ### Trivial Changes
