@@ -1,3 +1,9 @@
+## [1.0.13](https://github.com/rvagg/ghteams/compare/v1.0.12...v1.0.13) (2026-10-19)
+
+### Trivial Changes
+
+* **deps:** bump actions/setup-node ([#18](https://github.com/rvagg/ghteams/issues/18)) ([4915f17](https://github.com/rvagg/ghteams/commit/4915f173a5ae3508c5d0608d6274f73c06b4b40a))
+
 ## [1.0.12](https://github.com/rvagg/ghteams/compare/v1.0.11...v1.0.12) (2026-08-05)
 
 ### Trivial Changes
